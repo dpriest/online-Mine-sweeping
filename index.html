@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>扫雷游戏</title>
+<link type="text/css" rel="stylesheet" href="./css/reset.css" />
+<link type="text/css" rel="stylesheet" href="./css/common.css" />
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script>
+jQuery(function($){
+	iflogin = false;
+	$.ajax({
+		type: 'post',
+		url: 'userhandle.php',
+		data: 'action=checklogin',
+		success: function(msg){
+			msg = $.parseJSON(msg);
+			if(msg['result'] == 1){
+				iflogin = true;
+				$("#userinfo").html("欢迎,"+msg['username']+" <a href='#' id='logout'>退出</a>");
+			}else{
+				$("#userinfo").html('<a href="login.html">登录</a>');
+			}
+		}
+	});
+	$("#logout").live('click',function(){
+		$.ajax({
+			type: 'post',
+			url: 'userhandle.php',
+			data: 'action=logout',
+			success: function(msg){
+				iflogin = false;
+				$("#userinfo").html('<a href="login.html">登录</a>');
+			}
+		});
+		return false;
+	});
+	
+	$("#challenge").click(function(){
+		if(!iflogin){
+			alert("请先登录");
+			return false;
+		}
+	});
+	
+	$("#battle").click(function(){
+		if(!iflogin){
+			alert("请先登录");
+			return false;
+		}
+	});
+});
+</script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="logo">
+			<img src="./images/logo.png"/>
+		</div>
+		<div id="logotext">
+			<div id="userinfo"></div>
+			<div class="text">扫雷*Mine</div>
+		</div>
+		<div class="clear"></div>
+		<div id="moshi">
+			<a href="local.html" class="modelbtn right">单机模式</a>
+			<div class="clear"></div>
+			<a href="onlinerank.php" id="challenge" class="modelbtn left">挑战模式</a>
+			<div class="clear"></div>
+			<a href="roomlist.php" id="battle" class="modelbtn right">对战模式</a>
+		</div>
+		<div class="clear"></div>
+		<div id="footer">
+		-------------Coded by Pasu-----------
+		</div>
+	</div>
+</body>
+</html>

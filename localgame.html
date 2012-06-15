@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>扫雷游戏</title>
+
+<link type="text/css" rel="stylesheet" href="./css/common.css" />
+<link type="text/css" rel="stylesheet" href="./css/style.css" />
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./js/MineGame.js"></script>
+<script type="text/javascript" src="./js/MineBox.js"></script>
+<script>
+jQuery(function($){
+	var iflogin = false;
+	var username;
+	$.ajax({
+		type: 'post',
+		url: 'userhandle.php',
+		data: 'action=checklogin',
+		success: function(msg){
+			msg = $.parseJSON(msg);
+			if(msg['result'] == 1){
+				iflogin = true;
+				username = msg['username'];
+				$(".userinfo").html("当前游戏者："+msg['username']);
+			}else{
+				$(".userinfo").html('');
+			}
+		}
+	});
+	var game = new MineGame(9,9,10,$("#gamebox"));
+	game.onGameStart.push(function(){
+                    //alert('游戏开始');
+	});
+	game.onGameOver.push(function(){
+                    alert('你触雷了！');
+	});
+	game.onGameComplete.push(function(){
+		var seconds = $("#time").html();
+		if(game.ifRecord(seconds)){
+			if(iflogin){
+				game.rankRecord(username,seconds);
+				if(confirm("恭喜上榜,"+username+",查看排行榜？")){
+						window.open("localrank.html");
+					}			
+			}else{
+				var name = prompt("恭喜你上榜了，请输入你的昵称");
+				if(name){
+					game.rankRecord(name,seconds);
+					if(confirm("查看排行榜？")){
+						window.open("localrank.html");
+					}
+				}else{
+					game.rankRecord("匿名",seconds);
+					if(confirm("查看排行榜？")){
+						window.open("localrank.html");
+					}
+				}
+			}
+		}
+	});
+	game.start();
+});
+</script>
+</head>
+
+<body>
+	<div id="main">
+		<div class="userinfo"></div>
+		<div id="gamebox">	
+		</div>
+		<div id="timebox">
+			时间：<span id="time">0</span>   雷数：<span id="minenums">0</span>
+			<a href="localgame.html" title="新游戏"><img src="./images/logo.png" style="width:40px;height:32px;"></a>
+			<a href="index.html" title="新游戏">返回主页</a>
+		</div>
+		<div id="gametips">
+		(游戏提示：长按超过0.5秒为标记雷*，点击为打开方格，从点击第一个方格开始计时)
+		</div>
+	</div>
+</body>
+</html>

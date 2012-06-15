@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>扫雷游戏--注册</title>
+<link type="text/css" rel="stylesheet" href="./css/reset.css" />
+<link type="text/css" rel="stylesheet" href="./css/common.css" />
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script>
+jQuery(function($){
+	$("#registersubmit").click(function(){
+		var reEmail=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+		if($("#username").val() == ""){
+			tips("用户名不能为空",1500);
+		}else if($("#password").val() == ""){
+			tips("密码不能为空",1500);
+		}else if($("#email").val() == ""){
+			tips("邮箱地址不能为空",1500);
+		}else if(!reEmail.test($("#email").val())){
+			tips("邮箱地址格式不对",1500);
+		}else{
+			$.ajax({
+				type: "POST",
+				url: "userhandle.php",
+				data: "username="+$("#username").val()+"&password="+$("#password").val()+"&email="+$("#email").val()+"&action="+$("#action").val(),
+				success: function(msg){
+					msg = $.parseJSON(msg);
+					console.log(msg);
+					if(msg["result"] == 0){
+						tips("用户名已存在",1500);
+					}else if(msg["result"] == 1){
+						tips("注册不成功",1000);
+					}else if(msg["result"] == 2){
+						tips("注册成功,跳回首页...",1000);
+						window.location.href="index.html";
+					}
+			   }
+		
+			});
+		}
+		return false;
+	});
+	
+	function tips(text,speed){
+		$(".tips").html(text);
+		$(".tips").fadeIn(speed);
+		$(".tips").fadeOut(speed);
+	}
+});
+</script>
+</head>
+
+<body>
+		<form action="userhandle.php" method="post" class="fieldset" id="registerform">
+			<span class="legend">用户注册</span>
+			<div class="clear"></div>
+			<div class="tipbox">
+				<span class="tips"></span>
+			</div>
+			<table>
+				<tr><td>用户名：</td><td><input type="text" id="username"/></td></tr>
+				<tr><td>密码：</td><td><input type="password" id="password"/></td></tr>	
+				<tr><td>邮箱：</td><td><input type="text" id="email"/></td></tr>
+			</table>
+			<input type="hidden" id="action" value="register"/>
+			<input id="registersubmit" type="submit" value="注册"/>	
+		</form>
+</body>
+</html>

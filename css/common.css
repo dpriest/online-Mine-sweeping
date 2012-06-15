@@ -1,0 +1,250 @@
+@charset "utf-8";
+
+/*----------------index.html------*/
+
+#main,#main2{
+	width:300px;
+	height:400px;
+	background:#fcfcfc;
+	border:2px solid #B9AEAE;
+	margin:auto;
+	margin-top:10px;	
+}
+
+#logo{
+	float:left;
+}
+#logotext{
+	float:left;
+}
+#logotext .text{
+	height:50px;
+	font-size:28px;
+	line-height:50px;
+	margin-left:10px;
+	color:#463C3C;
+	font-family:"微软雅黑";
+}
+#userinfo{
+	width:170px;
+	height:27px;
+	text-align:center;
+	font-size:14px;
+	line-height:27px;
+}
+#moshi{
+	margin-top:10px;
+}
+#moshi .modelbtn{
+	display:block;
+	color:#fff;
+	font-size:20px;
+	text-decoration:none;
+	width:120px;
+	height:50px;
+	background:#B9AEAE;
+	margin-top:15px;
+	text-align:center;
+	line-height:50px;
+	font-weight:bold;
+}
+.left{
+	float:left;
+	margin-left:10px;
+}
+.right{
+	float:right;
+	margin-right:10px;
+}
+#footer{
+	margin-top:50px;
+	color:#A09C9A;
+}
+/*----------------end index.html------*/
+
+/*----------------login.html&register.html------*/
+
+.fieldset{
+	width:250px;
+	height:207px;
+	border:1px solid #29ABB1;
+	margin-top:50px;
+	margin: 50px auto;
+	-moz-border-radius-topleft: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+}
+
+.fieldset span.legend {
+	position: relative;
+	background-color: #fff;
+	padding: 3px;
+	top: -10px;
+	left:20px;
+	font: 700 16px Arial, Helvetica, sans-serif;
+	color: #73B304;
+}
+.fieldset table{
+	margin:auto;
+	margin-top:10px;
+}
+.fieldset table tr{
+	height:40px;
+	margin-top:10px;
+}
+.fieldset a{
+	display:block;
+	float:right;
+	margin-right:50px;
+	font-size:14px;
+	margin-top:10px;
+}
+#loginsubmit,#registersubmit{
+	float:right;
+	margin-right:100px;
+}
+ .tips{
+	margin-left:20px;
+	color:red;
+}
+.tipbox{
+	width:200px;
+	height:20px;
+}
+/*----------------end login.html&register.html------*/
+
+/*----------------game.html------*/
+#gamebox .mineGame{
+	margin:auto;
+}
+#main .userinfo,#main2 .userinfo{
+	width:270px;
+	height:27px;
+	text-align:center;
+	font-size:14px;
+	line-height:27px;
+}
+#timebox{
+	width:270px;
+	margin:auto;
+	text-align:center;
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}
+#gametips{
+	font-size:14px;
+	color:red;
+}
+/*----------------end game.html------*/
+
+/*---------------- local.html------*/
+
+#moshi .modelbtn2{
+	display:block;
+	color:#fff;
+	font-size:20px;
+	text-decoration:none;
+	width:300px;
+	height:50px;
+	background:#B9AEAE;
+	margin-top:30px;
+	text-align:center;
+	line-height:50px;
+	font-weight:bold;
+}
+
+/*---------------- rank.html------*/
+
+#rank .title{
+	width:250px;
+	height:30px;
+	line-height:30px;
+	background:#908A99;
+	color:white;
+	margin-top:20px;
+	font-size:18px;
+	font-weight:bold;
+	font-family:"微软雅黑";
+	text-indent:30px;
+}
+#rank table{
+	margin:auto;
+	margin-top:30px;
+}
+#rank table tr{
+	border:2px solid #E2CACA;; 
+}
+#rank table td{
+	width:85px;
+	height:25px;
+	overflow:hidden;
+	text-align:center;
+	line-height:25px;
+}
+#rank #onlinerank td{
+	width:70px;
+	height:24px;
+	line-height:24px;
+}
+#wantrank{
+	display:block;
+	margin-top:5px;
+	margin-left:10px;
+}
+/*---------------- room.html------*/
+.challenger{
+	width:280px;
+	height:100px;
+	background:white;
+	margin-top:25px;
+	border:1px solid grey;
+}
+.challenger .touxiang,.challenger .touxiang img{
+	width:120px;
+	height:100px;
+	float:left;
+}
+.challenger .info{
+	width:160px;
+	height:100px;
+	float:left;
+	text-align:center;
+	line-height:40px;
+}
+.left2{
+	float:left;
+}
+.right2{
+	float:right;
+}
+#clicker{
+	width:150px;
+	height:40px;
+	float:left;
+	margin-top:30px;
+	margin-left:20px;
+	color:red;
+}
+#readybtn{
+	display:block;
+	width:80px;
+	height:30px;
+	float:left;
+	margin-top:30px;
+	text-align:center;
+	line-height:30px;
+	background:#DD5757;
+	color:white;
+	margin-left:20px;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+
+

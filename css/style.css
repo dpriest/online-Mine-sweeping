@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+* {
+    margin:0;
+    padding:0;
+}
+
+body {
+    padding:10px;
+}
+
+table.mineGame td {
+    border:1px solid #eee;
+    width:27px;
+    height:27px;
+    text-align:center;
+	background:#eee;
+}
+
+table.mineGame td:hover {
+    background-color:#F3CECE;
+}
+
+table.mineGame td.enabled {
+    cursor:pointer;
+}
+
+table.mineGame td.disabled {
+    cursor:auto;
+    background-color:#CEBBBB;
+	
+}

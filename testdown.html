@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>扫雷游戏</title>
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script>
+jQuery(function($){
+	$("#long").mousedown(function(e){
+		//alert("ddd");
+		e.preventDefault();
+		date1 = new Date().getTime();
+		//console.log(date1);
+		return false;
+	});
+	$("#long").mouseup(function(e){
+		e.preventDefault();
+		date2 = new Date().getTime();
+		//console.log(date2);
+		if(date2 - date1 > 500){
+			alert("dddd");
+		}
+		return false;
+	});
+	$("#long").dblclick(function(){alert("dfdf");});
+});
+</script>
+</head>
+
+<body>
+	<h1 id="long">长按</h1>
+</body>
+</html>
